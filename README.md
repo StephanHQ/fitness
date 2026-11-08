@@ -5,6 +5,7 @@ Meine Trainings- und Übungspläne als Web-Apps (PWA). Jeder Ordner ist eine eig
 | Ordner | Plan |
 |---|---|
 | [`dehnen-beine-huefte/`](dehnen-beine-huefte/) | Dehnen – Beine & Hüfte, 15 Min. täglich, 4 Level |
+| [`haltung-ruecken-nacken/`](haltung-ruecken-nacken/) | Haltung – Rücken & Nacken, 60 Min., 2–3× pro Woche, 3 Level + Kurzversion |
 
 **Installieren:** Seite in Safari öffnen → Teilen → „Zum Home-Bildschirm“.
 
