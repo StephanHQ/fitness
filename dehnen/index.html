@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dehnprogramm – Beine & Hüfte</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f3ec">
+<meta name="description" content="15 Minuten täglich: Dehnprogramm für Beine und Hüfte in 4 Levels.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dehnen">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<style>
+  @font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format("woff2")}
+  @font-face{font-family:Inter;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format("woff2")}
+  @font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format("woff2")}
+  @font-face{font-family:Fraunces;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/fraunces-latin-600-normal.woff2) format("woff2")}
+  @font-face{font-family:Fraunces;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/fraunces-latin-700-normal.woff2) format("woff2")}
+  .install{display:none;align-items:flex-start;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 12px;margin:0 0 16px;font-size:14px}
+  .install.show{display:flex}
+  .install b{color:var(--accent)}
+  .install button{margin-left:auto;border:0;background:none;color:var(--muted);font:600 18px Inter,sans-serif;line-height:1;cursor:pointer;padding:0 2px}
+  :root{
+    --bg:#f7f3ec; --card:#fffdf9; --ink:#24222b; --muted:#6f6a73; --line:#e7e0d4;
+    --accent:#d9603b; --accent-soft:#fbe6dc; --ok:#3f8f62; --ok-soft:#e1f1e7;
+    --shirt:#3d8b8a; --pants:#2f3a56; --pants-f:#8c95ae; --pants-ff:#55607f;
+    --skin:#dfa985; --skin-f:#eecdb6; --skin-ff:#cf9a77; --shoe:#2a2d36; --shoe-f:#9da1ad; --shoe-ff:#474b56; --hair:#3b2f2b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:22px 16px 60px}
+  h1{font-family:Fraunces,Georgia,serif;font-size:30px;line-height:1.1;margin:4px 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 12px;font-size:15px}
+  .howto{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+  .howto span{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 11px}
+  .howto i{font-style:normal;color:var(--accent);font-weight:600}
+  .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:#ece5d9;padding:5px;border-radius:14px;position:sticky;top:8px;z-index:5}
+  .tab{border:0;background:transparent;padding:9px 4px;border-radius:10px;font:600 14px Inter,sans-serif;color:var(--muted);cursor:pointer}
+  .tab small{display:block;font-weight:500;font-size:11px;opacity:.8}
+  .tab.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .levelhead{margin:20px 0 10px}
+  .levelhead h2{font-family:Fraunces,Georgia,serif;font-size:22px;margin:0}
+  .levelhead p{margin:2px 0 0;color:var(--muted);font-size:14px}
+  .progress{height:8px;background:#e9e2d6;border-radius:99px;overflow:hidden;margin:6px 0 4px}
+  .bar{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .3s}
+  .progtxt{font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
+  .reset{border:0;background:none;color:var(--accent);font:500 13px Inter,sans-serif;cursor:pointer;padding:0}
+  .list{display:grid;gap:14px;margin-top:14px;grid-template-columns:1fr}
+  @media (min-width:640px){.list{grid-template-columns:1fr 1fr}}
+  .ex{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;transition:background .2s,border-color .2s,transform .15s;
+      -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:pan-y;-webkit-tap-highlight-color:transparent}
+  .ex.done{background:var(--ok-soft);border-color:#bfe0cb}
+  .ex.holding{border-color:var(--accent);transform:scale(.985)}
+  .pic{position:relative;background:#f2ebe0;aspect-ratio:1.75;transition:background .2s}
+  .ex.done .pic{background:#d6ecdf}
+  .ex.holding .pic{background:#fbeee6}
+  .pic svg.fig{display:block;width:100%;height:100%;pointer-events:none}
+  .hold{position:absolute;right:8px;top:8px;display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:var(--accent);background:rgba(255,255,255,.88);border-radius:99px;padding:3px 9px 3px 7px;box-shadow:0 1px 2px rgba(0,0,0,.08);transition:opacity .2s}
+  .hold svg{width:9px;height:9px}
+  .ex.holding .hold{opacity:0}
+  .body{padding:12px 14px 14px}
+  .row{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .ex h3{margin:0 0 4px;font-size:16.5px;line-height:1.25}
+  .dose{display:inline-block;font-size:12.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:99px;margin:0 0 6px}
+  .ex.done .dose{color:var(--ok);background:#cfe8d8}
+  .tip{margin:0 0 8px;font-size:14px;color:var(--muted)}
+  .vid{font-size:13px;font-weight:600;color:var(--accent);text-decoration:none}
+  .check{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid #cfc6b8;display:grid;place-items:center}
+  .ex.done .check{background:var(--ok);border-color:var(--ok)}
+  .check svg{width:14px;height:14px;opacity:0}
+  .ex.done .check svg{opacity:1}
+  .crit{margin-top:16px;background:var(--accent-soft);border-radius:14px;padding:13px 15px;font-size:14.5px}
+  .crit b{color:var(--accent)}
+  .rules{margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+  .rules h2{font-family:Fraunces,Georgia,serif;font-size:19px;margin:0 0 8px}
+  .rules ul{margin:0;padding-left:18px;font-size:14.5px}
+  .rules li{margin:4px 0}
+  .done-msg{display:none;margin-top:14px;text-align:center;background:var(--ok);color:#fff;border-radius:14px;padding:12px;font-weight:600}
+  .done-msg.show{display:block}
+  @media (max-width:480px){h1{font-size:26px}}
+
+  /* ---------- Figur ---------- */
+  .fig line{fill:none;stroke-linecap:round}
+  .ua,.fa{stroke:var(--skin)} .ua{stroke-width:7.6} .fa{stroke-width:6.6}
+  .hand{fill:var(--skin)}
+  .th,.sh,.hip{stroke:var(--pants)} .th{stroke-width:12.5} .sh{stroke-width:9.8}
+  .ft{stroke:var(--shoe);stroke-width:6.6}
+  .torso{stroke:var(--shirt)}
+  .neck{stroke:var(--skin);stroke-width:7}
+  .hair{fill:var(--hair)} .face{fill:var(--skin)} .eye{fill:var(--hair)}
+  .f.ua,.f.fa{stroke:var(--skin-f)} .f.hand{fill:var(--skin-f)} .f.th,.f.sh{stroke:var(--pants-f)} .f.ft{stroke:var(--shoe-f)}
+  .ff.ua,.ff.fa{stroke:var(--skin-ff)} .ff.hand{fill:var(--skin-ff)} .ff.th,.ff.sh{stroke:var(--pants-ff)} .ff.ft{stroke:var(--shoe-ff)}
+  .mat{fill:#e3d7c3}
+  .wall{fill:#e8dfd2} .wall-edge{stroke:#cdbfaa;stroke-width:1.6}
+  .pillow{fill:#e9c46a}
+  .couch{fill:#cdbfab} .couch2{fill:#b8a891}
+  .towel{stroke:#d9603b;stroke-width:3.2}
+  .arrow{fill:none;stroke:var(--accent);stroke-width:2.8;stroke-linecap:round;transition:opacity .2s}
+  .anim .arrow{opacity:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Dehnprogramm<br>Beine & Hüfte</h1>
+  <p class="sub">15 Minuten täglich · 4 Level. Bleib auf einem Level, bis du das Kriterium schaffst, meist 2–4 Wochen.</p>
+  <div class="howto"><span><i>Bild gedrückt halten</i> Bewegung ansehen</span><span><i>Antippen</i> Abhaken</span></div>
+  <div class="install" id="install"><span>📲 <b>Als App installieren:</b> In Safari unten auf <b>Teilen</b> tippen, dann <b>„Zum Home-Bildschirm“</b>.</span><button id="installX" aria-label="Hinweis schließen">×</button></div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="levelhead"><h2 id="lvTitle"></h2><p id="lvSub"></p></div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div class="progtxt"><span id="progTxt"></span><button class="reset" id="reset">Zurücksetzen</button></div>
+
+  <div class="list" id="list"></div>
+  <div class="done-msg" id="doneMsg">Geschafft für heute 🎉</div>
+  <div class="crit" id="crit"></div>
+
+  <div class="rules">
+    <h2>Immer gilt</h2>
+    <ul>
+      <li>Am besten abends oder nach Bewegung, wenn die Muskeln warm sind.</li>
+      <li>Langsam in die Dehnung gehen, ruhig atmen, nicht wippen.</li>
+      <li>Leichtes Ziehen ist gut, Schmerz nicht.</li>
+      <li>Regelmäßigkeit schlägt Intensität: lieber täglich 15 Min. als einmal pro Woche eine Stunde.</li>
+      <li>Direkt nach dem Aufstehen keine tiefe Vorbeuge, erst 5–10 Min. bewegen.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+/* ================= Posen =================
+   Seitenansicht schaut nach rechts, Boden bei y≈130.
+   h Kopfrichtung, n Hals, p Becken, kn/fn Knie/Knöchel vorne (bzw. links), kf/ff hinten (bzw. rechts),
+   en/hn Ellbogen/Hand vorne, ef/hf hinten.
+   front:1 Frontansicht · order Zeichenreihenfolge · ftN/ftF Fußhaltung (flat/flex/point/up/out/none)
+   props Requisiten · ar/ar2 Pfeile (einfach/doppelt) · hl Kopfabstand */
+const WALL=(x,side)=>({t:'wall',x,side});
+const PILLOW=(x,y,w,h)=>({t:'pillow',x,y,w,h});
+
+const P={
+  pendel:{h:[95,22],n:[95,32],p:[95,72],kn:[115,92],fn:[135,111],kf:[95,100],ff:[95,128],en:[99,52],hn:[102,70],ef:[76,42],hf:[58,47],
+    props:[WALL(54,-1)],ar:['M128 121 Q152 100 142 72']},
+  wiper:{front:1,h:[100,70],n:[100,80],p:[100,118],kn:[68,116],fn:[86,127],kf:[92,100],ff:[114,127],en:[84,100],hn:[74,124],ef:[116,100],hf:[126,124],
+    order:['af','an','T','H','lf','ln'],ar2:['M70 44 Q100 28 130 44']},
+  wiperWide:{front:1,h:[100,70],n:[100,80],p:[100,118],kn:[64,118],fn:[74,127],kf:[94,106],ff:[126,127],en:[84,100],hn:[74,124],ef:[116,100],hf:[126,124],
+    order:['af','an','T','H','lf','ln'],ar2:['M70 44 Q100 28 130 44']},
+  squatHold:{h:[120,73],n:[116,82],p:[98,118],kn:[126,106],fn:[110,128],kf:[124,108],ff:[108,128],en:[131,94],hn:[144,88],ef:[130,98],hf:[144,94],
+    props:[WALL(148,1)]},
+  squat:{h:[122,73],n:[118,82],p:[100,118],kn:[128,106],fn:[112,128],kf:[126,108],ff:[110,128],en:[130,100],hn:[138,88],ef:[128,102],hf:[136,90]},
+  squatShift:{front:1,h:[100,62],n:[100,72],p:[100,112],kn:[72,104],fn:[78,128],kf:[128,104],ff:[122,128],en:[84,90],hn:[99,95],ef:[116,90],hf:[101,95],
+    ar:['M58 36 L38 36','M142 36 L162 36']},
+  hipFlexor:{h:[112,52],n:[112,62],p:[114,102],kn:[146,100],fn:[140,128],kf:[92,124],ff:[64,125],en:[124,82],hn:[142,96],ef:[121,84],hf:[139,97],
+    ftF:'point',ar:['M110 117 L132 117']},
+  hipFlexorArm:{h:[112,52],n:[112,62],p:[114,102],kn:[146,100],fn:[140,128],kf:[92,124],ff:[64,125],en:[124,82],hn:[142,96],ef:[104,44],hf:[100,24],
+    ftF:'point',ar:['M110 117 L132 117']},
+  hamLying:{h:[34,121],n:[48,121],p:[88,122],kn:[96,94],fn:[103,66],kf:[116,123],ff:[144,124],en:[62,106],hn:[78,96],ef:[60,108],hf:[76,98],
+    towel:1,ftF:'flex'},
+  fig4:{h:[34,121],n:[48,121],p:[88,122],kn:[116,106],fn:[97,100],kf:[100,92],ff:[126,90],en:[70,110],hn:[90,106],ef:[68,112],hf:[88,108],
+    ftN:'point',ftF:'flex'},
+  quad:{h:[100,22],n:[100,32],p:[100,72],kn:[102,100],fn:[82,82],kf:[100,100],ff:[100,128],en:[92,56],hn:[83,80],ef:[116,45],hf:[136,40],
+    ftN:'point',props:[WALL(140,1)]},
+  calf:{h:[135,44],n:[129,52],p:[99,82],kn:[120,103],fn:[125,128],kf:[85,105],ff:[70,128],en:[145,58],hn:[158,50],ef:[144,62],hf:[158,56],
+    props:[WALL(162,1)]},
+  butterfly:{front:1,h:[100,66],n:[100,76],p:[100,118],kn:[66,112],fn:[97,126],kf:[134,112],ff:[103,126],en:[88,100],hn:[96,122],ef:[112,100],hf:[104,122],
+    order:['T','H','lf','ln','af','an'],ftN:'none',ftF:'none',ar:['M54 92 L54 106','M146 92 L146 106']},
+  straddle:{front:1,h:[100,78],n:[100,88],p:[100,120],kn:[68,124],fn:[36,126],kf:[132,124],ff:[164,126],en:[86,106],hn:[78,125],ef:[114,106],hf:[122,125],
+    ftN:'up',ftF:'up'},
+  straddleDeep:{front:1,h:[100,90],n:[100,100],p:[100,120],kn:[68,124],fn:[36,126],kf:[132,124],ff:[164,126],en:[80,112],hn:[68,127],ef:[120,112],hf:[132,127],
+    ftN:'up',ftF:'up',ar:['M100 42 L100 60']},
+  foldBent:{h:[120,116],n:[116,106],p:[98,74],kn:[108,100],fn:[100,128],kf:[106,101],ff:[98,128],en:[122,118],hn:[128,127],ef:[120,119],hf:[125,127]},
+  foldStraight:{h:[114,114],n:[112,104],p:[100,72],kn:[100,100],fn:[100,128],kf:[100,100],ff:[98,128],en:[117,116],hn:[121,127],ef:[115,117],hf:[119,128]},
+  pigeonPillow:{h:[112,58],n:[111,68],p:[104,104],kn:[132,118],fn:[102,124],kf:[70,120],ff:[40,126],en:[118,88],hn:[126,108],ef:[116,89],hf:[124,109],
+    ftN:'point',ftF:'point',props:[PILLOW(88,108,32,12)]},
+  pigeonFold:{h:[150,108],n:[141,105],p:[104,112],kn:[132,120],fn:[102,126],kf:[70,122],ff:[40,126],en:[154,120],hn:[172,126],ef:[152,121],hf:[170,127],
+    ftN:'point',ftF:'point'},
+  ninety:{front:1,h:[100,60],n:[100,70],p:[100,108],kn:[66,120],fn:[96,127],kf:[136,120],ff:[164,126],en:[84,92],hn:[78,124],ef:[116,92],hf:[122,124],
+    order:['af','an','T','H','lf','ln'],ftN:'none',ftF:'none',props:[PILLOW(80,108,40,13)],ar2:['M70 34 Q100 18 130 34']},
+  ninetyPro:{front:1,h:[100,70],n:[100,80],p:[100,120],kn:[66,122],fn:[96,127],kf:[136,116],ff:[164,124],en:[86,100],hn:[96,110],ef:[114,100],hf:[104,110],
+    order:['T','H','lf','ln','af','an'],ftN:'none',ftF:'none',ar:['M150 108 L150 92']},
+  couch:{h:[83,54],n:[82,64],p:[80,104],kn:[110,100],fn:[112,128],kf:[60,126],ff:[48,97],en:[96,82],hn:[108,98],ef:[94,84],hf:[106,99],
+    ftF:'point',props:[{t:'couch'}]},
+  seatedFold:{h:[112,95],n:[104,100],p:[70,122],kn:[98,123],fn:[126,121],kf:[84,113],ff:[92,125],en:[116,108],hn:[126,116],ef:[114,110],hf:[124,118],
+    ftN:'flex',ftF:'flex'},
+  frog:{front:1,h:[100,114],n:[100,106],p:[100,96],hl:9,kn:[58,124],fn:[50,127],kf:[142,124],ff:[150,127],en:[86,126],hn:[94,128],ef:[114,126],hf:[106,128],
+    order:['lf','ln','T','af','an','H'],ftN:'none',ftF:'none',ar:['M100 50 L100 68']},
+  cossack:{front:1,h:[93,62],n:[92,72],p:[84,110],kn:[56,102],fn:[56,128],kf:[114,119],ff:[144,128],en:[80,88],hn:[91,97],ef:[104,88],hf:[93,97],
+    ftN:'out',ftF:'up',ar2:['M70 38 L130 38']},
+  halfSplit:{h:[125,80],n:[116,84],p:[82,98],kn:[110,111],fn:[138,123],kf:[80,126],ff:[54,126],en:[117,104],hn:[118,125],ef:[115,105],hf:[116,125],
+    ftN:'flex',ftF:'point',ar:['M76 76 L58 76']}
+};
+
+/* ================= Bewegungen =================
+   f: Schlüsselbilder als Änderungen gegenüber dem Standbild ({} = Standbild).
+   m: Gelenkmodus je Glied (ln/lf Beine, an/af Arme): 'ik' Ende fixiert, 'fk' rotiert, 'lin' linear.
+   lin: alles linear (Frontansichten). dur/hold/rest in ms. */
+const MO={
+  pendel:{f:[{kn:[85,98],fn:[76,125]},{}],m:{ln:'fk'},dur:1000,hold:250,rest:250},
+  wiper:{lin:1,f:[{},{kn:[88,96],kf:[112,96]},{kn:[108,100],kf:[132,116]}],dur:2200,hold:600,rest:600},
+  wiperWide:{lin:1,f:[{},{kn:[84,94],kf:[116,94]},{kn:[106,106],kf:[136,118]}],dur:2200,hold:600,rest:600},
+  squatHold:{f:[{p:[110,72],n:[112,32],h:[113,22],kn:[112,100],kf:[110,100],en:[128,44],hn:[144,40],ef:[128,48],hf:[144,46]},{}],m:{an:'ik',af:'ik'},dur:1700},
+  squat:{f:[{p:[112,72],n:[113,32],h:[113,22],kn:[114,100],kf:[112,100],en:[132,36],hn:[150,38],ef:[130,38],hf:[148,40]},{}],dur:1700},
+  squatShift:{lin:1,f:[{p:[86,112],n:[88,72],h:[88,62],kn:[62,104],kf:[118,106],en:[72,90],hn:[87,95],ef:[104,90],hf:[89,95]},
+                       {p:[114,112],n:[112,72],h:[112,62],kn:[82,106],kf:[138,104],en:[96,90],hn:[111,95],ef:[128,90],hf:[113,95]}],dur:1600,hold:500,rest:500},
+  hipFlexor:{f:[{p:[100,102],n:[100,62],h:[100,52],kn:[134,102],en:[110,82],hn:[130,98],ef:[108,84],hf:[128,99]},{}],m:{lf:'lin',an:'ik',af:'ik'}},
+  hipFlexorArm:{f:[{p:[100,102],n:[100,62],h:[100,52],kn:[134,102],en:[110,82],hn:[130,98],ef:[98,82],hf:[100,100]},{ef:[131,60],hf:[150,58]},{}],m:{lf:'lin',an:'ik'},dur:1900},
+  hamLying:{f:[{kn:[109,104],fn:[130,86],en:[66,110],hn:[86,104],ef:[64,112],hf:[84,106]},{}],m:{ln:'fk'}},
+  fig4:{f:[{kf:[108,100],ff:[126,126],kn:[124,112],fn:[105,104],en:[68,124],hn:[86,125],ef:[66,125],hf:[84,126]},{}],m:{ln:'fk',lf:'fk'}},
+  quad:{f:[{fn:[100,128],en:[98,52],hn:[99,72]},{}],m:{ln:'fk'}},
+  calf:{f:[{p:[94,76],n:[116,40],h:[120,31],kn:[112,101],kf:[82,102],en:[137,48],ef:[137,52]},{}],m:{an:'ik',af:'ik'}},
+  butterfly:{lin:1,f:[{kn:[76,96],kf:[124,96]},{}],dur:1400,hold:800,rest:400},
+  straddle:{lin:1,f:[{h:[100,68],n:[100,78],en:[90,98],hn:[90,118],ef:[110,98],hf:[110,118]},{}]},
+  straddleDeep:{lin:1,f:[{h:[100,68],n:[100,78],en:[90,98],hn:[90,118],ef:[110,98],hf:[110,118]},{}],dur:1700},
+  foldBent:{f:[{p:[100,72],n:[101,32],h:[101,22],kn:[101,100],kf:[99,100],en:[102,52],hn:[103,70],ef:[100,52],hf:[101,70]},{}],dur:1800},
+  foldStraight:{f:[{p:[100,72],n:[101,32],h:[101,22],kf:[99,100],en:[102,52],hn:[103,70],ef:[100,52],hf:[101,70]},{}],dur:1800},
+  pigeonPillow:{f:[{p:[104,92],n:[114,54],h:[117,45],kn:[132,116],fn:[104,124],kf:[72,116],en:[124,74],hn:[130,96],ef:[122,76],hf:[128,97]},{}],m:{ln:'lin',lf:'lin'}},
+  pigeonFold:{f:[{h:[112,62],n:[111,72],p:[104,110],en:[118,92],hn:[126,112],ef:[116,93],hf:[124,113]},{}],m:{ln:'lin',lf:'lin'},dur:1800},
+  ninety:{lin:1,f:[{},{kn:[84,94],fn:[66,127],kf:[116,94],ff:[134,127]},{kn:[64,120],fn:[36,126],kf:[134,120],ff:[104,127]}],dur:2200,hold:700,rest:700},
+  ninetyPro:{lin:1,f:[{},{kn:[84,94],fn:[66,127],kf:[116,94],ff:[134,127]},{kn:[64,116],fn:[36,124],kf:[134,122],ff:[104,127]}],dur:2200,hold:700,rest:700},
+  couch:{f:[{p:[76,106],n:[104,78],h:[111,72],kn:[106,101],en:[110,96],hn:[122,108],ef:[108,98],hf:[120,109]},{}],m:{lf:'lin'}},
+  seatedFold:{f:[{n:[74,82],h:[75,72],en:[86,98],hn:[96,116],ef:[84,100],hf:[94,117]},{}],m:{ln:'lin',lf:'lin'},dur:1600},
+  frog:{lin:1,f:[{p:[100,84],n:[100,96],h:[100,104],en:[88,112],hn:[90,127],ef:[112,112],hf:[110,127]},{}]},
+  cossack:{lin:1,f:[{},{p:[100,114],n:[100,76],h:[100,66],kn:[68,106],kf:[132,106],en:[86,90],hn:[99,97],ef:[114,90],hf:[101,97]},
+                    {p:[116,110],n:[108,72],h:[107,62],kn:[86,119],kf:[144,102],en:[96,88],hn:[107,97],ef:[120,88],hf:[109,97]}],dur:2000,hold:500,rest:500},
+  halfSplit:{f:[{p:[96,100],n:[98,60],h:[98,50],kn:[124,100],en:[110,78],hn:[122,96],ef:[108,80],hf:[120,97]},{}],m:{lf:'lin'},dur:1700}
+};
+
+/* ================= Geometrie ================= */
+const J=['h','n','p','kn','fn','kf','ff','en','hn','ef','hf'];
+const lerp=(a,b,t)=>a+(b-a)*t;
+const L=(a,b,t)=>[lerp(a[0],b[0],t),lerp(a[1],b[1],t)];
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]];
+const sub=(a,b)=>[a[0]-b[0],a[1]-b[1]];
+const mul=(a,k)=>[a[0]*k,a[1]*k];
+const eq=(a,b)=>a[0]===b[0]&&a[1]===b[1];
+const dist=(a,b)=>Math.hypot(b[0]-a[0],b[1]-a[1]);
+const unit=(v,fb)=>{const l=Math.hypot(v[0],v[1]);return l<1e-6?(fb||[0,-1]):[v[0]/l,v[1]/l];};
+const ang=(a,b)=>Math.atan2(b[1]-a[1],b[0]-a[0]);
+const ease=x=>0.5-0.5*Math.cos(Math.PI*Math.min(1,Math.max(0,x)));
+function lerpAng(a,b,t){let d=b-a;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;return a+d*t;}
+function seg(oA,eA,oB,eB,o,t){const a=lerpAng(ang(oA,eA),ang(oB,eB),t),l=lerp(dist(oA,eA),dist(oB,eB),t);return [o[0]+Math.cos(a)*l,o[1]+Math.sin(a)*l];}
+function bend(r,m,e){const ax=e[0]-r[0],ay=e[1]-r[1],bx=m[0]-r[0],by=m[1]-r[1],c=ax*by-ay*bx,n=Math.hypot(ax,ay)*Math.hypot(bx,by)||1;return Math.abs(c)<0.06*n?0:Math.sign(c);}
+function ik(r,e,l1,l2,s){
+  const dx=e[0]-r[0],dy=e[1]-r[1];let d=Math.hypot(dx,dy)||0.001;const ux=dx/d,uy=dy/d;
+  if(d>=l1+l2){const k=d*l1/(l1+l2);return [r[0]+ux*k,r[1]+uy*k];}
+  d=Math.max(d,Math.abs(l1-l2)+0.01);
+  const a=(l1*l1-l2*l2+d*d)/(2*d),h=Math.sqrt(Math.max(0,l1*l1-a*a));
+  return [r[0]+ux*a-uy*h*s,r[1]+uy*a+ux*h*s];
+}
+function limb(o,a,b,t,root,mid,end,mode){
+  if(eq(a[root],b[root])&&eq(a[mid],b[mid])&&eq(a[end],b[end])){o[mid]=a[mid].slice();o[end]=a[end].slice();return;}
+  if(mode==='lin'){o[mid]=L(a[mid],b[mid],t);o[end]=L(a[end],b[end],t);return;}
+  if(mode==='fk'){o[mid]=seg(a[root],a[mid],b[root],b[mid],o[root],t);o[end]=seg(a[mid],a[end],b[mid],b[end],o[mid],t);return;}
+  const E=L(a[end],b[end],t);
+  const l1=lerp(dist(a[root],a[mid]),dist(b[root],b[mid]),t),l2=lerp(dist(a[mid],a[end]),dist(b[mid],b[end]),t);
+  const sa=bend(a[root],a[mid],a[end]),sb=bend(b[root],b[mid],b[end]);
+  o[mid]=(sa&&sb&&sa!==sb)?L(a[mid],b[mid],t):ik(o[root],E,l1,l2,sa||sb||1);
+  o[end]=E;
+}
+function interp(a,b,t,mo){
+  const o={};
+  if(mo.lin){J.forEach(k=>o[k]=L(a[k],b[k],t));return o;}
+  const m=mo.m||{};
+  o.p=L(a.p,b.p,t);
+  o.n=seg(a.p,a.n,b.p,b.n,o.p,t);
+  o.h=seg(a.n,a.h,b.n,b.h,o.n,t);
+  limb(o,a,b,t,'p','kn','fn',m.ln||'ik');
+  limb(o,a,b,t,'p','kf','ff',m.lf||'ik');
+  limb(o,a,b,t,'n','en','hn',m.an||'fk');
+  limb(o,a,b,t,'n','ef','hf',m.af||'fk');
+  return o;
+}
+function framesOf(key){return MO[key].f.map(o=>Object.assign({},P[key],o));}
+function poseAt(F,u,mo){const k=F.length-1,x=Math.min(Math.max(u,0),1)*k,i=Math.min(Math.floor(x),k-1);return interp(F[i],F[i+1],x-i,mo);}
+
+/* Körperteile aus Gelenken ableiten */
+function footTip(k,a,mode,side,front){
+  if(mode==='none')return null;
+  if(front){const t=mode==='up'?[side*0.35,-0.94]:[side*0.85,0.52];return add(a,mul(t,mode==='up'?8:7));}
+  const s=unit(sub(a,k)),fl=[s[1],-s[0]];let t;
+  if(mode==='point')t=s;
+  else if(mode==='flex')t=fl;
+  else if(mode==='flat'||a[1]>=121)t=[fl[0]>=0?1:-1,0];
+  else t=fl;
+  if(mode!=='point'&&t[1]>0&&a[1]+t[1]*9>129)t=[t[0]>=0?1:-1,0];
+  return add(a,mul(t,9));
+}
+function parts(q,M){
+  const front=!!M.front,dir=unit(sub(q.n,q.p)),hd=unit(sub(q.h,q.n),dir);
+  const hc=add(q.n,mul(hd,M.hl||(front?15:16)));
+  const g={hc,w:L(q.p,q.n,0.3),sEnd:add(q.n,mul(dir,-4)),neckEnd:add(q.n,mul(hd,9))};
+  if(front){
+    g.shN=add(q.n,[-9,2]);g.shF=add(q.n,[9,2]);g.hpN=add(q.p,[-6,0]);g.hpF=add(q.p,[6,0]);
+    g.face=add(hc,[0,hd[1]<0?2.3:5]);g.eye=null;
+  }else{
+    const sh=add(q.n,mul(dir,-3));g.shN=sh;g.shF=sh;g.hpN=q.p;g.hpF=q.p;
+    const f=[-hd[1],hd[0]];
+    g.face=add(add(hc,mul(f,2.4)),mul(hd,-1.2));
+    g.eye=add(add(hc,mul(f,5.6)),mul(hd,1.4));
+  }
+  g.toeN=footTip(q.kn,q.fn,M.ftN,-1,front);
+  g.toeF=footTip(q.kf,q.ff,M.ftF,1,front);
+  return g;
+}
+
+/* ================= Zeichnen ================= */
+function propSvg(pr){
+  if(pr.t==='wall'){const x=pr.x,w=400,rx=pr.side>0?x:x-w;return '<rect x="'+rx+'" y="-300" width="'+w+'" height="431" class="wall"/><line x1="'+x+'" y1="-300" x2="'+x+'" y2="131" class="wall-edge"/>';}
+  if(pr.t==='pillow')return '<rect x="'+pr.x+'" y="'+pr.y+'" width="'+pr.w+'" height="'+pr.h+'" rx="5" class="pillow"/>';
+  if(pr.t==='couch')return '<rect x="-60" y="58" width="72" height="73" rx="8" class="couch2"/><rect x="-60" y="91" width="105" height="40" rx="8" class="couch"/>';
+  return '';
+}
+function propBox(pr){
+  if(pr.t==='wall')return pr.side>0?[pr.x-2,null,pr.x+12,null]:[pr.x-12,null,pr.x+2,null];
+  if(pr.t==='pillow')return [pr.x,pr.y,pr.x+pr.w,pr.y+pr.h];
+  if(pr.t==='couch')return [24,91,45,131];
+  return null;
+}
+/* Bildausschnitt: eng ums Standbild (s) bzw. um alle Bewegungsphasen (u) */
+const AR=1.75,VB={};
+function fitBox(key,union){
+  const id=key+(union?'#u':'#s');if(VB[id])return VB[id];
+  const M=P[key];let x1=1e9,x2=-1e9,y1=1e9;
+  const take=(pt,r)=>{if(!pt)return;x1=Math.min(x1,pt[0]-r);x2=Math.max(x2,pt[0]+r);y1=Math.min(y1,pt[1]-r);};
+  const poses=[M];
+  if(union&&MO[key]){const F=framesOf(key);for(let u=0;u<=1.0001;u+=0.05)poses.push(poseAt(F,u,MO[key]));}
+  poses.forEach(q=>{const g=parts(q,M);J.forEach(k=>{if(k!=='h')take(q[k],8);});take(g.hc,11);take(g.toeN,5);take(g.toeF,5);});
+  (M.props||[]).forEach(pr=>{const b=propBox(pr);if(!b)return;x1=Math.min(x1,b[0]);x2=Math.max(x2,b[2]);if(b[1]!=null)y1=Math.min(y1,b[1]);});
+  if(!union)[].concat(M.ar||[],M.ar2||[]).forEach(d=>{const n=(d.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);for(let i=0;i+1<n.length;i+=2)take([n[i],n[i+1]],5);});
+  const bottom=139;let top=y1-6,H=bottom-top,W=Math.max(x2-x1+12,H*AR);H=W/AR;top=bottom-H;
+  const x0=(x1+x2)/2-W/2;
+  return VB[id]=[x0,top,W,H];
+}
+const vbStr=v=>v.map(x=>x.toFixed(1)).join(' ');
+let MID=0;
+function makeSvg(key){
+  const M=P[key],front=!!M.front,fc=front?'ff':'f';
+  const order=M.order||(front?['lf','ln','T','H','af','an']:['af','lf','T','H','ln','an']);
+  const G={
+    af:'<line class="ua '+fc+'" data-r="afU"/><line class="fa '+fc+'" data-r="afL"/><circle class="hand '+fc+'" r="4" data-r="afH"/>',
+    an:'<line class="ua" data-r="anU"/><line class="fa" data-r="anL"/><circle class="hand" r="4" data-r="anH"/>',
+    lf:'<line class="th '+fc+'" data-r="lfT"/><line class="sh '+fc+'" data-r="lfS"/><line class="ft '+fc+'" data-r="lfF"/>',
+    ln:'<line class="th" data-r="lnT"/><line class="sh" data-r="lnS"/><line class="ft" data-r="lnF"/>',
+    T:'<line class="hip" stroke-width="'+(front?21:16.5)+'" data-r="hip"/><line class="torso" stroke-width="'+(front?23:17.5)+'" data-r="torso"/>',
+    H:'<line class="neck" data-r="neck"/><circle class="hair" r="10" data-r="hair"/><circle class="face" r="9.2" data-r="face"/><circle class="eye" r="1.15" data-r="eye"/>'
+  };
+  const mid='ah'+(++MID),mk='url(#'+mid+')';
+  return '<svg class="fig" viewBox="'+vbStr(fitBox(key,false))+'" data-k="'+key+'" xmlns="http://www.w3.org/2000/svg">'+
+    '<defs><marker id="'+mid+'" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d9603b"/></marker></defs>'+
+    '<rect x="-400" y="130.5" width="1000" height="12" class="mat"/>'+(M.props||[]).map(propSvg).join('')+
+    order.map(k=>G[k]).join('')+
+    (M.towel?'<line class="towel" data-r="towel"/>':'')+
+    (M.ar||[]).map(d=>'<path d="'+d+'" class="arrow" marker-end="'+mk+'"/>').join('')+
+    (M.ar2||[]).map(d=>'<path d="'+d+'" class="arrow" marker-start="'+mk+'" marker-end="'+mk+'"/>').join('')+
+    '</svg>';
+}
+function refs(svg){if(!svg._r){svg._r={};svg.querySelectorAll('[data-r]').forEach(e=>svg._r[e.dataset.r]=e);}return svg._r;}
+const F1=v=>(+v).toFixed(1);
+function setL(el,a,b){if(!el)return;if(!a||!b){el.setAttribute('visibility','hidden');return;}el.removeAttribute('visibility');el.setAttribute('x1',F1(a[0]));el.setAttribute('y1',F1(a[1]));el.setAttribute('x2',F1(b[0]));el.setAttribute('y2',F1(b[1]));}
+function setC(el,c){if(!el)return;if(!c){el.setAttribute('visibility','hidden');return;}el.removeAttribute('visibility');el.setAttribute('cx',F1(c[0]));el.setAttribute('cy',F1(c[1]));}
+function draw(svg,q){
+  const M=P[svg.dataset.k],g=parts(q,M),r=refs(svg);
+  setL(r.afU,g.shF,q.ef);setL(r.afL,q.ef,q.hf);setC(r.afH,q.hf);
+  setL(r.anU,g.shN,q.en);setL(r.anL,q.en,q.hn);setC(r.anH,q.hn);
+  setL(r.lfT,g.hpF,q.kf);setL(r.lfS,q.kf,q.ff);setL(r.lfF,q.ff,g.toeF);
+  setL(r.lnT,g.hpN,q.kn);setL(r.lnS,q.kn,q.fn);setL(r.lnF,q.fn,g.toeN);
+  setL(r.hip,q.p,g.w);setL(r.torso,g.w,g.sEnd);setL(r.neck,q.n,g.neckEnd);
+  setC(r.hair,g.hc);setC(r.face,g.face);setC(r.eye,g.eye);
+  if(r.towel)setL(r.towel,q.hn,q.fn);
+}
+
+/* ================= Animation ================= */
+let AN=null,raf=0;
+function kindOf(mo){const l=mo.f.length-1;if(!Object.keys(mo.f[l]).length)return 'L';if(!Object.keys(mo.f[0]).length)return 'F';return 'X';}
+function startAnim(card){
+  const svg=card.querySelector('svg.fig'),key=svg.dataset.k,mo=MO[key];
+  if(!mo)return false;
+  stopNow();
+  const kind=kindOf(mo),t=performance.now();
+  AN={card,svg,key,mo,F:framesOf(key),kind,phase:'intro',t0:t,last:t,u:kind==='L'?1:0,cur:P[key],vb:fitBox(key,false).slice()};
+  card.classList.add('holding');svg.classList.add('anim');
+  raf=requestAnimationFrame(tick);
+  return true;
+}
+function zoom(a,now){
+  const tgt=fitBox(a.key,a.phase!=='outro'),k=1-Math.exp(-Math.max(0,now-a.last)/120);a.last=now;
+  a.vb=a.vb.map((v,i)=>v+(tgt[i]-v)*k);a.svg.setAttribute('viewBox',vbStr(a.vb));
+}
+function tick(now){
+  const a=AN;if(!a)return;
+  zoom(a,now);
+  const el=now-a.t0,dur=a.mo.dur||1500,hold=a.mo.hold??1100,rest=a.mo.rest??500;
+  let pose;
+  if(a.phase==='intro'){
+    if(a.kind==='L'){const d=750;a.u=1-ease(el/d);pose=poseAt(a.F,a.u,a.mo);if(el>=d){a.phase='loop';a.t0=now+250;}}
+    else if(a.kind==='F'){a.phase='loop';a.t0=now;a.u=0;pose=a.F[0];}
+    else{const d=450;pose=interp(P[a.key],a.F[0],ease(el/d),a.mo);if(el>=d){a.phase='loop';a.t0=now+150;a.u=0;}}
+  }else if(a.phase==='loop'){
+    const T=2*dur+hold+rest;let u=0;
+    if(el>0){const tt=el%T;u=tt<dur?ease(tt/dur):tt<dur+hold?1:tt<2*dur+hold?1-ease((tt-dur-hold)/dur):0;}
+    a.u=u;pose=poseAt(a.F,u,a.mo);
+  }else{
+    if(a.kind==='X'){const d=420;pose=interp(a.from,P[a.key],ease(el/d),a.mo);if(el>=d){finish();return;}}
+    else{const target=a.kind==='L'?1:0,k=Math.min(1,el/a.od);a.u=a.u0+(target-a.u0)*ease(k);pose=poseAt(a.F,a.u,a.mo);if(k>=1){finish();return;}}
+  }
+  a.cur=pose;draw(a.svg,pose);
+  raf=requestAnimationFrame(tick);
+}
+function stopAnim(){
+  const a=AN;if(!a||a.phase==='outro')return;
+  if(a.kind==='X'){a.from=a.cur;}
+  else{a.u0=a.u;const target=a.kind==='L'?1:0;a.od=420+600*Math.abs(target-a.u0);}
+  a.phase='outro';a.t0=performance.now();
+}
+function finish(){const a=AN;if(!a)return;draw(a.svg,P[a.key]);a.svg.setAttribute('viewBox',vbStr(fitBox(a.key,false)));a.card.classList.remove('holding');a.svg.classList.remove('anim');AN=null;}
+function stopNow(){if(AN){cancelAnimationFrame(raf);finish();}}
+
+/* ================= Übungen & Level ================= */
+const EX={
+  warm:{n:'Aufwärmen',pose:'pendel',q:'Beinpendel Aufwärmen Hüfte',tip:'Kurz gehen, dann je 10 Beinpendel und Hüftkreise pro Seite. Mit einer Hand an der Wand abstützen.'},
+  wiper:{n:'Scheibenwischer',pose:'wiper',q:'Scheibenwischer Übung Hüfte Mobilität',tip:'Hände hinten abstützen, Knie langsam von Seite zu Seite kippen.'},
+  wiperWide:{n:'Scheibenwischer, weit',pose:'wiperWide',q:'Scheibenwischer Übung Hüfte Mobilität',tip:'Füße weiter auseinander, so kommst du der 90/90-Position näher.'},
+  squatHold:{n:'Hocke mit Festhalten',pose:'squatHold',q:'tiefe Hocke halten Anleitung',tip:'Am Türrahmen halten, Fersen am Boden, Rücken lang.'},
+  squat:{n:'Hocke ohne Festhalten',pose:'squat',q:'tiefe Hocke Deep Squat Anleitung',tip:'Ellbogen drücken die Knie leicht nach außen. Ein Kissen unter den Fersen ist erlaubt.'},
+  squatShift:{n:'Hocke mit Gewichtsverlagerung',pose:'squatShift',q:'Deep Squat Gewichtsverlagerung seitlich',tip:'Langsam von links nach rechts schieben, die Fersen bleiben unten.'},
+  hipFlexor:{n:'Hüftbeuger im Ausfallschritt',pose:'hipFlexor',q:'Hüftbeuger dehnen kniend',tip:'Becken nach vorne schieben, Po anspannen, Oberkörper aufrecht.'},
+  hipFlexorArm:{n:'Hüftbeuger mit Arm nach oben',pose:'hipFlexorArm',q:'Hüftbeuger dehnen kniend Arm über Kopf',tip:'Den Arm auf der Seite des hinteren Knies nach oben strecken.'},
+  hamLying:{n:'Oberschenkelrückseite im Liegen',pose:'hamLying',q:'Beinbeuger dehnen liegend Handtuch',tip:'Handtuch um den Fuß, Bein gestreckt nach oben ziehen, Rücken bleibt am Boden.'},
+  fig4:{n:'Liegende Hüftdehnung',pose:'fig4',q:'Figur 4 Dehnung liegend',tip:'Knöchel aufs andere Knie legen, das untere Bein sanft Richtung Brust ziehen.'},
+  quad:{n:'Quadrizeps im Stehen',pose:'quad',q:'Oberschenkel vorne dehnen stehend',tip:'Ferse zum Po, Knie zeigt nach unten, Becken leicht nach vorne.'},
+  calf:{n:'Waden an der Wand',pose:'calf',q:'Waden dehnen an der Wand',tip:'Hinteres Bein gestreckt, die Ferse bleibt am Boden.'},
+  butterfly:{n:'Schmetterling',pose:'butterfly',q:'Schmetterling Dehnung Anleitung',tip:'Fußsohlen zusammen, Knie Richtung Boden sinken lassen, Rücken gerade.'},
+  straddle:{n:'Grätsche im Sitzen',pose:'straddle',q:'Grätsche Dehnung sitzend',tip:'Beine weit auseinander, mit geradem Rücken nach vorne lehnen.'},
+  straddleFold:{n:'Grätsche mit Vorbeugen',pose:'straddleDeep',q:'Grätsche Dehnung sitzend vorbeugen',tip:'Aus der Hüfte nach vorne kippen, nicht den Rücken rund machen.'},
+  straddleDeep:{n:'Grätsche, Brust Richtung Boden',pose:'straddleDeep',q:'Grätsche Dehnung sitzend vorbeugen',tip:'So tief wie möglich, Unterarme dürfen auf den Boden.'},
+  foldBent:{n:'Vorbeuge, Knie gebeugt',pose:'foldBent',q:'Vorbeuge im Stehen Dehnung',tip:'Oberkörper locker hängen lassen. Das ist auch dein Fortschrittstest.'},
+  fold:{n:'Vorbeuge im Stehen',pose:'foldBent',q:'Vorbeuge im Stehen Dehnung',tip:'Knie nur so weit beugen wie nötig. Kommen die Finger an den Boden?'},
+  foldStraight:{n:'Vorbeuge mit gestreckten Beinen',pose:'foldStraight',q:'Vorbeuge im Stehen gestreckte Beine',tip:'Beine gestreckt, Handflächen Richtung Boden.'},
+  pigeonPillow:{n:'Taube mit Kissen',pose:'pigeonPillow',q:'Taube Dehnung mit Kissen Anfänger',tip:'Kissen unter die Hüfte des vorderen Beins, Oberkörper aufrecht.'},
+  pigeonFold:{n:'Taube mit Vorbeugen',pose:'pigeonFold',q:'Taube Yoga Vorbeuge Anleitung',tip:'Ohne Kissen, mit langem Rücken über das vordere Bein lehnen.'},
+  pigeonDeep:{n:'Taube mit tiefer Vorbeuge',pose:'pigeonFold',q:'Taube Yoga Vorbeuge Anleitung',tip:'Unterarme oder Stirn Richtung Boden, ruhig weiteratmen.'},
+  ninety:{n:'90/90 mit Kissen',pose:'ninety',q:'90 90 Hüftmobilität Anleitung',tip:'Erst 30 Sek. pro Seite halten, dann 1 Min. langsam die Seiten wechseln.'},
+  ninetyPro:{n:'90/90 ohne Hände',pose:'ninetyPro',q:'90 90 hip switch ohne Hände',tip:'Ohne Abstützen wechseln, in jeder Position das hintere Knie kurz anheben.'},
+  couch:{n:'Couch Stretch',pose:'couch',q:'Couch Stretch Anleitung',tip:'Hinteres Knie am Boden, Fuß an Wand oder Couch. Po anspannen.'},
+  seatedFold:{n:'Sitzende Vorbeuge, ein Bein',pose:'seatedFold',q:'sitzende Vorbeuge ein Bein Dehnung',tip:'Ein Bein gestreckt, der andere Fuß an der Innenseite des Oberschenkels.'},
+  frog:{n:'Frosch',pose:'frog',q:'Frosch Dehnung Hüfte Anleitung',tip:'Auf allen vieren, Knie weit auseinander, Po langsam nach hinten schieben.'},
+  cossack:{n:'Cossack Squats',pose:'cossack',q:'Cossack Squat Anleitung',tip:'Tiefe seitliche Ausfallschritte, Ferse des gebeugten Beins bleibt unten.'},
+  halfSplit:{n:'Halber Spagat',pose:'halfSplit',q:'halber Spagat Dehnung Anleitung',tip:'Hinteres Knie am Boden, vorderes Bein gestreckt, Hüfte nach hinten.'}
+};
+
+const LEVELS=[
+  {t:'Level 1 · Einstieg',s:'Sanft starten, Gewohnheit aufbauen',
+   items:[['warm','2 Min.'],['wiper','1 Min.'],['squatHold','1 Min.'],['hipFlexor','2× 30 Sek./Seite'],['hamLying','2× 30 Sek./Seite'],['fig4','2× 30 Sek./Seite'],['quad','30 Sek./Seite'],['calf','30 Sek./Seite'],['butterfly','1 Min.'],['foldBent','1 Min.']],
+   crit:'Die Hocke klappt 1 Min. ohne große Mühe.'},
+  {t:'Level 2 · Aufbau',s:'Länger halten, ohne Festhalten',
+   items:[['warm','2 Min.'],['wiperWide','1 Min.'],['squat','1 Min.'],['hipFlexorArm','45 Sek./Seite'],['hamLying','45 Sek./Seite'],['pigeonPillow','45 Sek./Seite'],['quad','45 Sek./Seite'],['calf','45 Sek./Seite'],['butterfly','1 Min.'],['straddle','1 Min.'],['fold','1 Min.']],
+   crit:'Deine Fingerspitzen erreichen nach der Routine den Boden.'},
+  {t:'Level 3 · Fortgeschritten',s:'Tiefer in Hüfte und Beine',
+   items:[['warm','2 Min.'],['ninety','30 Sek./Seite + 1 Min. Wechsel'],['squatShift','1,5 Min.'],['couch','1 Min./Seite'],['pigeonFold','1 Min./Seite'],['seatedFold','1 Min./Seite'],['frog','1 Min.'],['straddleFold','1,5 Min.'],['fold','1 Min.']],
+   crit:'Der 90/90 klappt ohne Kissen und mit sauberen Wechseln.'},
+  {t:'Level 4 · Profi',s:'Aktive Mobilität und Spagat-Vorbereitung',
+   items:[['warm','2 Min.'],['ninetyPro','2 Min.'],['cossack','8× pro Seite'],['couch','1 Min./Seite'],['halfSplit','1 Min./Seite'],['pigeonDeep','1 Min./Seite'],['frog','1,5 Min.'],['straddleDeep','1 Min.'],['foldStraight','1 Min.']],
+   crit:'Halten statt steigern: 2–3× pro Woche reichen, um die Beweglichkeit zu behalten. Für mehr den Spagat gezielt angehen.'}
+];
+
+/* ================= Zustand & UI ================= */
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const today=(d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'))(new Date());
+let lv=parseInt(store.get('dehn-level')||'0',10);if(!(lv>=0&&lv<4))lv=0;
+let done={};
+const key=()=>'dehn-'+today+'-'+lv;
+function load(){try{done=JSON.parse(store.get(key())||'{}')}catch(e){done={}}}
+function save(){store.set(key(),JSON.stringify(done));}
+
+const checkSvg='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const holdHint='<span class="hold"><svg viewBox="0 0 10 10"><path d="M2.5 1.5 L8.5 5 L2.5 8.5 z" fill="#d9603b"/></svg>halten</span>';
+const list=document.getElementById('list');
+const yt=q=>'https://www.youtube.com/results?search_query='+encodeURIComponent(q);
+
+function render(){
+  stopNow();load();
+  document.getElementById('tabs').innerHTML=LEVELS.map((L,i)=>'<button class="tab'+(i===lv?' on':'')+'" data-i="'+i+'">Level '+(i+1)+'<small>'+['Einstieg','Aufbau','Fortgeschr.','Profi'][i]+'</small></button>').join('');
+  const Lv=LEVELS[lv];
+  document.getElementById('lvTitle').textContent=Lv.t;
+  document.getElementById('lvSub').textContent=Lv.s+' · ca. 15 Min.';
+  list.innerHTML=Lv.items.map(([k,dose],i)=>{
+    const e=EX[k];
+    return '<div class="ex'+(done[i]?' done':'')+'" data-i="'+i+'"><div class="pic">'+makeSvg(e.pose)+holdHint+'</div>'+
+      '<div class="body"><div class="row"><h3>'+(i+1)+'. '+e.n+'</h3><span class="check">'+checkSvg+'</span></div>'+
+      '<span class="dose">'+dose+'</span><p class="tip">'+e.tip+'</p>'+
+      '<a class="vid" href="'+yt(e.q)+'" target="_blank" rel="noopener">Video-Anleitung ↗</a></div></div>';
+  }).join('');
+  list.querySelectorAll('svg.fig').forEach(s=>draw(s,P[s.dataset.k]));
+  document.getElementById('crit').innerHTML=(lv<3?'<b>Weiter zu Level '+(lv+2)+', wenn:</b> ':'<b>Ziel erreicht:</b> ')+Lv.crit;
+  progress();
+}
+function progress(){
+  const n=LEVELS[lv].items.length,c=Object.values(done).filter(Boolean).length;
+  document.getElementById('bar').style.width=(c/n*100)+'%';
+  document.getElementById('progTxt').textContent='Heute: '+c+' von '+n+' erledigt';
+  document.getElementById('doneMsg').classList.toggle('show',c===n);
+}
+
+/* Gedrückt halten = Animation, Antippen = abhaken */
+let pressT=0,sx=0,sy=0,suppress=false;
+list.addEventListener('pointerdown',e=>{
+  const c=e.target.closest('.ex');if(!c||e.target.closest('a'))return;
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  suppress=false;sx=e.clientX;sy=e.clientY;clearTimeout(pressT);
+  pressT=setTimeout(()=>{pressT=0;if(startAnim(c))suppress=true;},260);
+});
+list.addEventListener('pointermove',e=>{if(pressT&&Math.hypot(e.clientX-sx,e.clientY-sy)>10){clearTimeout(pressT);pressT=0;}});
+const endPress=()=>{if(pressT){clearTimeout(pressT);pressT=0;}stopAnim();};
+window.addEventListener('pointerup',endPress);
+window.addEventListener('pointercancel',endPress);
+window.addEventListener('blur',stopNow);
+list.addEventListener('contextmenu',e=>{if(e.target.closest('.ex'))e.preventDefault();});
+list.addEventListener('click',e=>{
+  const c=e.target.closest('.ex');if(!c||e.target.closest('a'))return;
+  if(suppress){suppress=false;return;}
+  const i=c.dataset.i;done[i]=!done[i];c.classList.toggle('done',done[i]);save();progress();
+});
+document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;lv=+b.dataset.i;store.set('dehn-level',lv);render();});
+document.getElementById('reset').addEventListener('click',()=>{done={};save();render();});
+render();
+/* ================= PWA ================= */
+(function(){
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const standalone=window.navigator.standalone===true||window.matchMedia('(display-mode: standalone)').matches;
+  const box=document.getElementById('install');
+  if(ios&&!standalone&&store.get('dehn-install-x')!=='1')box.classList.add('show');
+  document.getElementById('installX').addEventListener('click',()=>{box.classList.remove('show');store.set('dehn-install-x','1');});
+  if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+})();
+</script>
+</body>
+</html>
