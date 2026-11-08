@@ -26,22 +26,34 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Meine Trainingspläne</h1>
-  <p class="sub">Jeder Plan ist eine eigene App: öffnen, dann in Safari auf Teilen → „Zum Home-Bildschirm“.</p>
+  <h1 data-t="h1">Meine Trainingspläne</h1>
+  <p class="sub" data-t="sub">Jeder Plan ist eine eigene App: öffnen, dann in Safari auf Teilen → „Zum Home-Bildschirm“.</p>
 
   <a class="plan" href="dehnen-beine-huefte/">
     <img src="dehnen-beine-huefte/icons/icon-192.png" alt="">
-    <div><h2>Dehnen – Beine & Hüfte</h2><p>15 Min. täglich · 4 Level</p></div>
+    <div><h2 data-t="d1">Dehnen – Beine & Hüfte</h2><p data-t="d2">15 Min. täglich · 4 Level</p></div>
     <span class="arrow">›</span>
   </a>
 
   <a class="plan" href="haltung-ruecken-nacken/">
     <img src="haltung-ruecken-nacken/icons/icon-192.png" alt="">
-    <div><h2>Haltung – Rücken & Nacken</h2><p>60 Min., 2–3× pro Woche · 3 Level + Kurzversion</p></div>
+    <div><h2 data-t="h1a">Haltung – Rücken & Nacken</h2><p data-t="h2a">50–60 Min., 2–3× pro Woche · 3 Level + Kurzversion</p></div>
     <span class="arrow">›</span>
   </a>
 
-  <p class="note">Der Fortschritt wird nur auf deinem Gerät gespeichert.</p>
+  <p class="note" data-t="note">Der Fortschritt wird nur auf deinem Gerät gespeichert.</p>
 </div>
+<script>
+/* Deutsch, wenn das Gerät auf Deutsch steht, sonst Englisch */
+(function(){
+  var l=(((navigator.languages&&navigator.languages[0])||navigator.language||'de')+'').toLowerCase().slice(0,2);
+  if(l==='de')return;
+  var EN={h1:'My training plans',sub:'Each plan is its own app: open it, then in Safari tap Share → “Add to Home Screen”.',
+    d1:'Stretching – Legs &amp; Hips',d2:'15 min a day · 4 levels',h1a:'Posture – Back &amp; Neck',h2a:'50–60 min, 2–3× a week · 3 levels + short version',
+    note:'Your progress is saved only on your device.'};
+  document.documentElement.lang='en';document.title='My training plans';
+  [].forEach.call(document.querySelectorAll('[data-t]'),function(e){var v=EN[e.getAttribute('data-t')];if(v)e.innerHTML=v;});
+})();
+</script>
 </body>
 </html>

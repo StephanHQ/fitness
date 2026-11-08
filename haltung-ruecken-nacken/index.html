@@ -12,6 +12,7 @@
 <meta name="apple-mobile-web-app-title" content="Haltung">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
+<script>(function(){var l=(((navigator.languages&&navigator.languages[0])||navigator.language||'de')+'').toLowerCase().slice(0,2);if(l!=='de'){var m=document.querySelector('link[rel=manifest]');if(m)m.href='manifest.en.webmanifest';var a=document.querySelector('meta[name=apple-mobile-web-app-title]');if(a)a.content='Posture';document.title='Posture – Back & Neck';}})();</script>
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <style>
@@ -145,25 +146,25 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Haltung<br>Rücken & Nacken</h1>
-  <p class="sub">Ca. 50–60 Minuten, 2–3× pro Woche, mit mindestens einem Tag Pause dazwischen. An den anderen Tagen die Kurzversion mit 10 Minuten.</p>
-  <div class="howto"><span><i>Bild gedrückt halten</i> Bewegung ansehen</span><span><i>Antippen</i> Abhaken</span></div>
-  <div class="install" id="install"><span>📲 <b>Als App installieren:</b> In Safari unten auf <b>Teilen</b> tippen, dann <b>„Zum Home-Bildschirm“</b>.</span><button id="installX" aria-label="Hinweis schließen">×</button></div>
-  <p class="equip"><b>Du brauchst:</b> Matte, Stuhl, ein fest gerolltes Handtuch oder eine Faszienrolle und ein Theraband (ersatzweise ein Handtuch).</p>
+  <h1 data-t="h1">Haltung<br>Rücken & Nacken</h1>
+  <p class="sub" data-t="sub">Ca. 50–60 Minuten, 2–3× pro Woche, mit mindestens einem Tag Pause dazwischen. An den anderen Tagen die Kurzversion mit 10 Minuten.</p>
+  <div class="howto" data-t="howto"><span><i>Bild gedrückt halten</i> Bewegung ansehen</span><span><i>Antippen</i> Abhaken</span></div>
+  <div class="install" id="install"><span data-t="install">📲 <b>Als App installieren:</b> In Safari unten auf <b>Teilen</b> tippen, dann <b>„Zum Home-Bildschirm“</b>.</span><button id="installX" aria-label="Hinweis schließen">×</button></div>
+  <p class="equip" data-t="equip"><b>Du brauchst:</b> Matte, Stuhl, ein fest gerolltes Handtuch oder eine Faszienrolle und ein Theraband (ersatzweise ein Handtuch).</p>
 
   <div class="tabs" id="tabs"></div>
 
   <div class="levelhead"><h2 id="lvTitle"></h2><p id="lvSub"></p></div>
   <div class="progress"><div class="bar" id="bar"></div></div>
-  <div class="progtxt"><span id="progTxt"></span><button class="reset" id="reset">Zurücksetzen</button></div>
+  <div class="progtxt"><span id="progTxt"></span><button class="reset" id="reset" data-t="reset">Zurücksetzen</button></div>
 
   <div class="list" id="list"></div>
-  <div class="done-msg" id="doneMsg">Geschafft für heute 🎉</div>
+  <div class="done-msg" id="doneMsg" data-t="doneMsg">Geschafft für heute 🎉</div>
   <div class="crit" id="crit"></div>
 
   <div class="rules">
-    <h2>Immer gilt</h2>
-    <ul>
+    <h2 data-t="rulesH">Immer gilt</h2>
+    <ul data-t="rules">
       <li><b>Grundhaltung:</b> Bauchnabel sanft nach innen, Becken leicht aufrichten, Kinn leicht einziehen, ruhig weiteratmen.</li>
       <li>Langsam und kontrolliert, Qualität vor Wiederholungen. Zwischen den Sätzen 30–45 Sek. Pause.</li>
       <li>Muskelbrennen und leichtes Ziehen sind okay, stechender Schmerz nicht.</li>
@@ -190,17 +191,55 @@
     <div class="pl-timer"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="pl-track"/><circle cx="60" cy="60" r="52" class="pl-ring" id="plRing"/></svg><div class="pl-time" id="plTime"></div></div>
     <div class="pl-rep" id="plRep"></div>
     <div class="pl-next" id="plNext"></div>
-    <button class="pl-done" id="plDoneBtn" hidden>Schließen</button>
+    <button class="pl-done" id="plDoneBtn" hidden data-t="close">Schließen</button>
     <div class="pl-ctrl">
       <button class="pl-ib" id="plPrev" aria-label="Zurück"><svg viewBox="0 0 20 20"><path d="M5 4 V16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16 4.5 L8 10 L16 15.5 Z" fill="currentColor"/></svg></button>
       <button class="pl-ib pl-main" id="plPause" aria-label="Pause"></button>
       <button class="pl-ib" id="plSkip" aria-label="Weiter"><svg viewBox="0 0 20 20"><path d="M15 4 V16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4 4.5 L12 10 L4 15.5 Z" fill="currentColor"/></svg></button>
     </div>
-    <p class="pl-hint">Kein Ton? Lautstärke und Stummschalter am iPhone prüfen.</p>
+    <p class="pl-hint" data-t="noSound">Kein Ton? Lautstärke und Stummschalter am iPhone prüfen.</p>
   </div>
 </div>
 
 <script>
+/* ================= Sprache: Deutsch, wenn das Gerät auf Deutsch steht, sonst Englisch ================= */
+const LANG=(((navigator.languages&&navigator.languages[0])||navigator.language||'de')+'').toLowerCase().slice(0,2)==='de'?'de':'en';
+document.documentElement.lang=LANG;
+const UI={
+  de:{hold:'halten',video:'Video-Anleitung ↗',today:(c,n)=>'Heute: '+c+' von '+n+' erledigt',nextLevel:n=>'Weiter zu Level '+n+', wenn:',goal:'Ziel erreicht:',
+    start:'Training starten',approx:'ca.',min:'Min.',
+    ph:{ready:'Bereit machen',work:'Übung',rest:'Pause',switch:'Seitenwechsel',between:'Pause',done:'Fertig'},change:'Wechsel',
+    nextUp:'Als Nächstes: ',setOf:(a,b)=>'Satz '+a+' von '+b,side:n=>'Seite '+n,breathe:'Kurz durchatmen',soon:(a,b)=>'Gleich: Satz '+a+' von '+b,
+    switchNow:'Wechseln',otherSide:'Andere Seite',doneTitle:'Geschafft! 🎉',doneSub:'Alle Übungen erledigt.',doneTip:'Gut gemacht. Dein Fortschritt ist gespeichert.',
+    after:'Danach: ',exOf:(a,b)=>'Übung '+a+' von '+b,left:m=>'noch ca. '+m+' Min.',rep:'Wdh.',alt:'abwechselnd'},
+  en:{hold:'hold',video:'Video guide ↗',today:(c,n)=>'Today: '+c+' of '+n+' done',nextLevel:n=>'Move on to Level '+n+' when:',goal:'Goal reached:',
+    start:'Start workout',approx:'approx.',min:'min',
+    ph:{ready:'Get ready',work:'Exercise',rest:'Rest',switch:'Switch sides',between:'Rest',done:'Done'},change:'Switch',
+    nextUp:'Next: ',setOf:(a,b)=>'Set '+a+' of '+b,side:n=>'Side '+n,breathe:'Catch your breath',soon:(a,b)=>'Up next: set '+a+' of '+b,
+    switchNow:'Switch',otherSide:'Other side',doneTitle:'Done! 🎉',doneSub:'All exercises completed.',doneTip:'Well done. Your progress is saved.',
+    after:'After that: ',exOf:(a,b)=>'Exercise '+a+' of '+b,left:m=>'about '+m+' min left',rep:'Rep',alt:'alternating',
+    howto:'<span><i>Press &amp; hold the picture</i> see the movement</span><span><i>Tap</i> check off</span>',
+    reset:'Reset',doneMsg:'Done for today 🎉',rulesH:'Keep in mind',close:'Close',
+    noSound:'No sound? Check the volume and the silent switch on your iPhone.',
+    install:'📲 <b>Install as an app:</b> In Safari, tap <b>Share</b> at the bottom, then <b>“Add to Home Screen”</b>.'}
+};
+const t=(k,...a)=>{const v=UI[LANG][k]!==undefined?UI[LANG][k]:UI.de[k];return typeof v==='function'?v(...a):v;};
+/* Dosierung: intern bleibt sie deutsch (der Timer liest sie), angezeigt wird sie in der Gerätesprache */
+const DOSE_EN=[[/(\d+),(\d+)/g,'$1.$2'],[/je (\d+) Sek\./g,'$1 s hold each'],[/(\d+) Sek\. halten/g,'$1 s hold'],[/Sek\.\/Seite/g,'s/side'],[/Min\.\/Seite/g,'min/side'],
+  [/Sek\./g,'s'],[/Min\./g,'min'],[/pro Seite/g,'per side'],[/Wechsel/g,'alternating'],[/langsam/g,'slowly'],[/stärkeres Band/g,'stronger band'],[/Beine weit strecken/g,'legs far out']];
+const dd=s=>LANG==='de'?s:DOSE_EN.reduce((a,[r,v])=>a.replace(r,v),s);
+const blkT=s=>(LANG==='en'&&typeof I18N_EN!=='undefined'&&I18N_EN.blk&&I18N_EN.blk[s])||s;
+function applyLang(){
+  if(LANG!=='en'||typeof I18N_EN==='undefined')return;
+  const C=I18N_EN;
+  Object.keys(C.ex||{}).forEach(k=>{if(EX[k])Object.assign(EX[k],C.ex[k]);});
+  (C.levels||[]).forEach((e,i)=>{if(LEVELS[i])Object.assign(LEVELS[i],e);});
+  if(C.tabs&&typeof TABS!=='undefined')TABS.splice(0,TABS.length,...C.tabs);
+  if(C.title)document.title=C.title;
+  document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t,v=(C.ui&&C.ui[k]!==undefined)?C.ui[k]:UI.en[k];if(typeof v==='string')el.innerHTML=v;});
+  const at=document.querySelector('meta[name="apple-mobile-web-app-title"]');if(at&&C.appTitle)at.setAttribute('content',C.appTitle);
+}
+
 /* ================= Posen =================
    Seitenansicht schaut nach rechts, Boden bei y≈130.
    h Kopfrichtung, n Hals, p Becken, kn/fn Knie/Knöchel vorne (bzw. links), kf/ff hinten (bzw. rechts),
@@ -684,6 +723,54 @@ const PLAY_CFG={ready:5,between:20,setRest:{s:40,d:10},
   tempo:{pelvicTilt:4,catCow:4,tExt:4,deadBug:4,quadPlus:2.5,birdDog:4,bridge:3,bridgeMarch:3,row:3,wallAngel:4,proneY:4,pullApart:3,pushPlusKnee:2.5},
   strength:['chinLying','deadBug','quadPlus','birdDog','bridge','bridgeMarch','row','wallAngel','plankKnee','plank','sidePlankKnee','sidePlank','headLift','pushPlusKnee','proneY','pullApart']};
 
+/* Englische Inhalte (werden nur verwendet, wenn das Gerät nicht auf Deutsch steht) */
+const I18N_EN={
+  title:'Posture – Back & Neck',appTitle:'Posture',
+  ui:{h1:'Posture<br>Back &amp; Neck',
+    sub:'About 50–60 minutes, 2–3× a week with at least one rest day in between. On the other days, do the 10-minute short version.',
+    equip:'<b>You’ll need:</b> a mat, a chair, a tightly rolled towel or a foam roller, and a resistance band (or a towel instead).',
+    rules:'<li><b>Basic position:</b> gently draw your belly button in, tilt your pelvis slightly upright, tuck your chin a little, keep breathing calmly.</li><li>Slow and controlled, quality over reps. Rest 30–45 s between sets.</li><li>Muscle burn and a gentle pull are fine, sharp pain is not.</li><li>Stop right away and see a doctor if you feel tingling or numbness in your arms or legs, dizziness, or increasing pain.</li><li>When sitting, get up and move briefly every 30–45 minutes. Keep your screen at roughly eye level.</li>'},
+  tabs:[['Level 1','Beginner'],['Level 2','Building'],['Level 3','Advanced'],['Short','10 min']],
+  blk:{'Ankommen & Atmen':'Arrive & breathe','Mobilisieren':'Mobilize','Aktivieren: Nacken, Rumpf, Schulterblatt':'Activate: neck, core, shoulder blade',
+       'Kräftigen':'Strengthen','Dehnen':'Stretch','Entspannen':'Relax','Aufrichten':'Straighten up'},
+  levels:[
+    {t:'Level 1 · Beginner',s:'Basics and clean technique',crit:'<b>Move on to Level 2 when:</b> all exercises feel clean and pain-free and the kneeling forearm plank works for 3× 30 s without arching your lower back.'},
+    {t:'Level 2 · Building',s:'More holding, more shoulder blade work',crit:'<b>Move on to Level 3 when:</b> the forearm plank works cleanly for 3× 45 s and the kneeling side plank for 30 s per side.'},
+    {t:'Level 3 · Advanced',s:'Full planks, stronger band',crit:'<b>Goal reached:</b> twice a week is enough to maintain this level. For more, use a stronger band and longer holds.'},
+    {t:'Short version · 10 minutes',s:'For the days in between and after long sitting',crit:'<b>When:</b> on days without the 60-minute session and as a break after long sitting. No band? Still move your arms and squeeze your shoulder blades together.'}],
+  ex:{
+    breathe:{n:'Belly breathing, legs on a chair',q:'90 90 breathing legs on chair belly breathing',tip:'Lie on your back with your lower legs on a chair. Breathe in through your nose into your belly for 4 s, breathe out slowly for 6 s. Keep your shoulders and jaw relaxed.'},
+    pelvicTilt:{n:'Pelvic tilts',q:'pelvic tilt lying exercise',tip:'On your back, feet on the floor. Breathe out, gently draw your belly button in and press your lower back into the mat. Hold for 3 s, then release.'},
+    catCow:{n:'Cat-cow',q:'cat cow exercise tutorial',tip:'On all fours. Round your back and let your head hang as you breathe out, return only slightly as you breathe in. Emphasize the rounding and don’t push into a sway back.'},
+    child:{n:'Child’s pose',q:'child pose lower back stretch',tip:'From all fours, push your hips back toward your heels and keep your arms long. Breathe calmly into your lower back.'},
+    tExt:{n:'Upper-back extension over a roll',q:'thoracic extension foam roller',tip:'Place a tightly rolled towel or a foam roller crosswise under your shoulder blades, hands supporting your head. Let your upper body sink back over the roll. Your hips stay on the floor, no sway back.'},
+    kneesChest:{n:'Knees to chest',q:'knees to chest stretch lying',tip:'On your back, gently pull both knees to your chest with your hands and breathe calmly. This relieves your lower back.'},
+    chinLying:{n:'Lying chin tucks',q:'lying chin tuck deep neck flexors',tip:'On your back, the back of your head stays on the mat. Gently nod your chin toward your chest, like making a double chin, and hold for 5 s. Strengthens the deep neck flexors against a forward head posture.'},
+    deadBug:{n:'Dead bug',q:'dead bug exercise tutorial',tip:'On your back, arms toward the ceiling, knees above your hips. Keep your lower back on the floor while you extend one arm back and the opposite leg forward.'},
+    quadPlus:{n:'Scapular push on all fours',q:'quadruped scapular push up serratus anterior',tip:'Arms straight, hands under your shoulders. Push the floor away so your upper back rounds slightly, then slowly sink back. Strengthens the muscle that holds your shoulder blade against your rib cage.'},
+    birdDog:{n:'Bird dog',q:'bird dog exercise tutorial',tip:'On all fours. Extend one arm forward and the opposite leg back. Keep your pelvis level, no sway back.'},
+    bridge:{n:'Glute bridge',q:'glute bridge proper form',tip:'On your back, feet on the floor. Squeeze your glutes and lift your hips until your knees, hips and shoulders form a line. Don’t arch your lower back.'},
+    bridgeMarch:{n:'Glute bridge march',q:'glute bridge march exercise',tip:'From the bridge, lift one knee at a time without letting your hips drop or tilt to the side.'},
+    row:{n:'Resistance band row',q:'standing resistance band row door anchor',tip:'Anchor the band at chest height, for example in a door. Pull your elbows back close to your body, shoulder blades together and down, shoulders away from your ears.'},
+    wallAngel:{n:'Wall angels',q:'wall angels posture exercise',tip:'Back, back of your head and arms against the wall, chin slightly tucked. Slowly slide your arms up and back down while your lower back stays close to the wall.'},
+    plankKnee:{n:'Kneeling forearm plank',q:'kneeling forearm plank beginner',tip:'Elbows under your shoulders. Knees, hips and head form a line. Brace your belly and tuck your pelvis slightly so your lower back doesn’t arch.'},
+    plank:{n:'Forearm plank',q:'forearm plank proper form',tip:'Like the kneeling version, but on your toes. Your body forms a line and your hips don’t sag.'},
+    sidePlankKnee:{n:'Kneeling side plank',q:'kneeling side plank beginner',tip:'On your side on one forearm, knees bent. Lift your hips until your knees, hips and shoulders form a line.'},
+    sidePlank:{n:'Side plank',q:'side plank proper form',tip:'On your side on one forearm, legs straight. Lift your hips and hold, top arm pointing to the ceiling.'},
+    doorPec:{n:'Doorway chest stretch',q:'doorway pec stretch',tip:'Forearm on the door frame at shoulder height, elbow at about 90 degrees. Gently lean forward until you feel a stretch in your chest.'},
+    neckSide:{n:'Side neck stretch',q:'upper trapezius neck stretch',tip:'Tilt your head to the side with your hand resting lightly on it. Let the other shoulder sink down. Don’t pull, just use the weight of your hand.'},
+    headLift:{n:'Chin tuck with head lift',q:'deep neck flexor head lift exercise',tip:'On your back. Tuck your chin first, then lift your head 1–2 cm and hold. Keep your chin tucked and don’t push it forward.'},
+    pushPlusKnee:{n:'Kneeling push-up plus',q:'knee push up plus serratus',tip:'Push-up position on your knees, arms straight. Move only your shoulder blades: push the floor away so your upper back rounds slightly, then return. Good for a shoulder blade that sticks out.'},
+    proneY:{n:'Prone Y raise',q:'prone Y raise shoulder blade',tip:'Lie on your stomach, forehead on a towel. Arms angled forward in a Y, thumbs up. Lift your arms slightly for 2–3 s and draw your shoulder blades down.'},
+    pullApart:{n:'Band pull-apart',q:'band pull apart posture',tip:'Hold the band at shoulder height in front of you. Pull it apart with straight arms until your arms form a T. Shoulder blades together, shoulders down.'},
+    wallStand:{n:'Wall posture check',q:'wall posture exercise chin tuck',tip:'Heels a hand’s width from the wall. Glutes, shoulder blades and the back of your head against the wall, pelvis slightly tucked, chin gently tucked. Hold for 20 s and memorize the position.'},
+    hipFlexStand:{n:'Standing hip flexor stretch',q:'standing hip flexor stretch',tip:'Take a big step forward, back heel lifted. Tuck your pelvis and squeeze your glutes until you feel a stretch at the front of the back hip. Works in the office too.'},
+    hipFlexor:{n:'Kneeling hip flexor stretch',q:'kneeling hip flexor stretch',tip:'Back knee on a cushion. Tuck your pelvis slightly and push it forward, squeeze your glutes, upper body upright.'},
+    hipFlexorArm:{n:'Hip flexor stretch, arm raised',q:'kneeling hip flexor stretch arm overhead',tip:'Like the kneeling stretch, plus reach the arm on the side of the back knee up overhead.'},
+    couch:{n:'Couch stretch',q:'couch stretch',tip:'Back knee on the floor, foot against a wall or couch. Tuck your pelvis, squeeze your glutes and slowly straighten up.'}
+  }
+};
+
 /* ================= Zustand & UI ================= */
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 const today=(d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'))(new Date());
@@ -694,7 +781,7 @@ function load(){try{done=JSON.parse(store.get(key())||'{}')}catch(e){done={}}}
 function save(){store.set(key(),JSON.stringify(done));}
 
 const checkSvg='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const holdHint='<span class="hold"><svg viewBox="0 0 10 10"><path d="M2.5 1.5 L8.5 5 L2.5 8.5 z" fill="#d9603b"/></svg>halten</span>';
+const holdHint='<span class="hold"><svg viewBox="0 0 10 10"><path d="M2.5 1.5 L8.5 5 L2.5 8.5 z" fill="#d9603b"/></svg>'+t('hold')+'</span>';
 const list=document.getElementById('list');
 const yt=q=>'https://www.youtube.com/results?search_query='+encodeURIComponent(q);
 
@@ -706,12 +793,12 @@ function render(){
   document.getElementById('lvSub').textContent=Lv.s+' · ca. '+Lv.min+' Min.';
   let num=0;
   list.innerHTML=Lv.items.map((it,i)=>{
-    if(typeof it==='string'){const [t,d]=it.slice(1).split('|');return '<div class="blk"><span>'+t+'</span>'+(d?'<em>'+d+'</em>':'')+'</div>';}
+    if(typeof it==='string'){const [bt,bd]=it.slice(1).split('|');return '<div class="blk"><span>'+blkT(bt)+'</span>'+(bd?'<em>'+dd(bd)+'</em>':'')+'</div>';}
     const [k,dose]=it,e=EX[k];num++;
     return '<div class="ex'+(done[i]?' done':'')+'" data-i="'+i+'"><div class="pic">'+makeSvg(e.pose)+holdHint+'</div>'+
       '<div class="body"><div class="row"><h3>'+num+'. '+e.n+'</h3><span class="check">'+checkSvg+'</span></div>'+
-      '<span class="dose">'+dose+'</span><p class="tip">'+e.tip+'</p>'+
-      '<a class="vid" href="'+yt(e.q)+'" target="_blank" rel="noopener">Video-Anleitung ↗</a></div></div>';
+      '<span class="dose">'+dd(dose)+'</span><p class="tip">'+e.tip+'</p>'+
+      '<a class="vid" href="'+yt(e.q)+'" target="_blank" rel="noopener">'+t('video')+'</a></div></div>';
   }).join('');
   list.querySelectorAll('svg.fig').forEach(s=>draw(s,P[s.dataset.k]));
   document.getElementById('crit').innerHTML=Lv.crit;
@@ -721,7 +808,7 @@ const exIdx=()=>LEVELS[lv].items.map((it,i)=>typeof it==='string'?-1:i).filter(i
 function progress(){
   const ids=exIdx(),n=ids.length,c=ids.filter(i=>done[i]).length;
   document.getElementById('bar').style.width=(c/n*100)+'%';
-  document.getElementById('progTxt').textContent='Heute: '+c+' von '+n+' erledigt';
+  document.getElementById('progTxt').textContent=t('today',c,n);
   document.getElementById('doneMsg').classList.toggle('show',c===n);
 }
 
@@ -746,7 +833,7 @@ list.addEventListener('click',e=>{
 });
 document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;lv=+b.dataset.i;store.set('halt-level',lv);render();});
 document.getElementById('reset').addEventListener('click',()=>{done={};save();render();});
-render();
+applyLang();render();
 
 /* ================= Trainings-Player: Play-Knopf, Timer, Töne =================
    Liest die Dosierung jeder Übung (z. B. "3× 10", "2× 30 Sek./Seite", "1 Min.") und
@@ -803,8 +890,8 @@ const secSum=seq=>seq.reduce((a,p)=>a+p.dur,0);
 const fmt=s=>{s=Math.max(0,Math.ceil(s));const m=Math.floor(s/60),r=s%60;return m?m+':'+String(r).padStart(2,'0'):String(r);};
 function updatePlayBtn(){
   const m=Math.max(1,Math.round(secSum(buildSeq().seq)/60));
-  $('playTxt').innerHTML='Training starten <small>· ca. '+m+' Min.</small>';
-  $('lvSub').textContent=LEVELS[lv].s+' · ca. '+m+' Min.';
+  $('playTxt').innerHTML=t('start')+' <small>· '+t('approx')+' '+m+' '+t('min')+'</small>';
+  $('lvSub').textContent=LEVELS[lv].s+' · '+t('approx')+' '+m+' '+t('min');
 }
 /* Töne mit Web Audio: werden im Browser erzeugt, keine Dateien nötig */
 function audioInit(){
@@ -842,18 +929,18 @@ function animOn(){if(!(AN&&AN.player)&&document.visibilityState==='visible'){if(
 function renderPhase(ph){
   const e=PL.ex[ph.x],E=EX[e.k];
   $('player').className='player '+ph.t;
-  $('plPill').textContent=ph.label||{ready:'Bereit machen',work:'Übung',rest:'Pause',switch:'Seitenwechsel',between:'Pause',done:'Fertig'}[ph.t];
+  $('plPill').textContent=ph.label?t('change'):t('ph')[ph.t];
   setFig(e.k);
-  let name=E.n,sub=e.dose,tip=E.tip,next='';
+  let name=E.n,sub=dd(e.dose),tip=E.tip,next='';
   const nx=PL.ex[ph.x+1];
-  if(ph.t==='ready'||ph.t==='between')name='Als Nächstes: '+E.n;
-  if(ph.t==='work'){const b=[];if(ph.sets>1)b.push('Satz '+ph.set+' von '+ph.sets);if(ph.side)b.push('Seite '+ph.side);sub=e.dose+(b.length?' · '+b.join(' · '):'');}
-  if(ph.t==='rest'){name='Kurz durchatmen';sub='Gleich: Satz '+ph.nextSet+' von '+ph.sets;tip=E.n;}
-  if(ph.t==='switch'){name=ph.label?'Wechseln':'Andere Seite';sub=E.n;tip='';}
-  if(ph.t==='done'){name='Geschafft! 🎉';sub='Alle Übungen erledigt.';tip='Gut gemacht. Dein Fortschritt ist gespeichert.';}
-  if(ph.t!=='done'&&ph.t!=='ready'&&ph.t!=='between'&&nx)next='Danach: '+EX[nx.k].n;
+  if(ph.t==='ready'||ph.t==='between')name=t('nextUp')+E.n;
+  if(ph.t==='work'){const b=[];if(ph.sets>1)b.push(t('setOf',ph.set,ph.sets));if(ph.side)b.push(t('side',ph.side));sub=dd(e.dose)+(b.length?' · '+b.join(' · '):'');}
+  if(ph.t==='rest'){name=t('breathe');sub=t('soon',ph.nextSet,ph.sets);tip=E.n;}
+  if(ph.t==='switch'){name=ph.label?t('switchNow'):t('otherSide');sub=E.n;tip='';}
+  if(ph.t==='done'){name=t('doneTitle');sub=t('doneSub');tip=t('doneTip');}
+  if(ph.t!=='done'&&ph.t!=='ready'&&ph.t!=='between'&&nx)next=t('after')+EX[nx.k].n;
   $('plName').textContent=name;$('plSub').textContent=sub;$('plTip').textContent=tip;$('plNext').textContent=next;$('plRep').textContent='';
-  $('plExNo').textContent=ph.t==='done'?LEVELS[lv].t:'Übung '+(ph.x+1)+' von '+PL.ex.length;
+  $('plExNo').textContent=ph.t==='done'?LEVELS[lv].t:t('exOf',ph.x+1,PL.ex.length);
   $('plPause').innerHTML=PL.paused?ICON.play:ICON.pause;
   $('plDoneBtn').hidden=ph.t!=='done';
   if(ph.t==='work'&&!PL.paused)animOn();else if(AN&&AN.player)stopNow();
@@ -878,11 +965,11 @@ function plTick(){
   if(!PL.paused&&sec!==PL.lastSec){if(PL.lastSec!==null&&sec>=1&&sec<=3)SND.count();PL.lastSec=sec;}
   if(ph.t==='work'&&ph.reps){
     const r=Math.min(ph.reps,Math.floor((ph.dur-rem)/ph.per)+1);
-    if(r!==PL.lastRep){if(PL.lastRep>0&&!PL.paused)SND.tick();PL.lastRep=r;$('plRep').textContent='Wdh. '+r+' / '+ph.reps+(ph.alt?' · abwechselnd':'');}
+    if(r!==PL.lastRep){if(PL.lastRep>0&&!PL.paused)SND.tick();PL.lastRep=r;$('plRep').textContent=t('rep')+' '+r+' / '+ph.reps+(ph.alt?' · '+t('alt'):'');}
   }
   if(ph.t==='work'&&!PL.paused)animOn();
   let left=rem;for(let j=PL.i+1;j<PL.seq.length;j++)left+=PL.seq[j].dur;
-  $('plLeft').textContent='noch ca. '+Math.max(1,Math.ceil(left/60))+' Min.';
+  $('plLeft').textContent=t('left',Math.max(1,Math.ceil(left/60)));
   $('plBar').style.width=(100*(1-left/PL.total)).toFixed(1)+'%';
 }
 function plStart(){

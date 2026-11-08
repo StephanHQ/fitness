@@ -1,10 +1,11 @@
 /* Service Worker: macht die App offline nutzbar.
    Seite: erst Netzwerk (damit Updates ankommen), sonst Cache. Alles andere: erst Cache. */
-const VERSION = 'haltung-ruecken-nacken-v2';
+const VERSION = 'haltung-ruecken-nacken-v3';
 const FILES = [
   './',
   './index.html',
   './manifest.webmanifest',
+  './manifest.en.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',

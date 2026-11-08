@@ -10,3 +10,5 @@ Meine Trainings- und Übungspläne als Web-Apps (PWA). Jeder Ordner ist eine eig
 **Installieren:** Seite in Safari öffnen → Teilen → „Zum Home-Bildschirm“.
 
 Der Fortschritt wird nur lokal auf dem Gerät gespeichert.
+
+Die Apps zeigen Deutsch, wenn das Gerät auf Deutsch eingestellt ist, sonst Englisch.
