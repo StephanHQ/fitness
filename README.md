@@ -4,7 +4,7 @@ Meine Trainings- und Übungspläne als Web-Apps (PWA). Jeder Ordner ist eine eig
 
 | Ordner | Plan |
 |---|---|
-| [`dehnen/`](dehnen/) | Dehnprogramm Beine & Hüfte, 15 Min. täglich, 4 Level |
+| [`dehnen-beine-huefte/`](dehnen-beine-huefte/) | Dehnen – Beine & Hüfte, 15 Min. täglich, 4 Level |
 
 **Installieren:** Seite in Safari öffnen → Teilen → „Zum Home-Bildschirm“.
 
